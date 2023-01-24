@@ -12,15 +12,9 @@ export const FormLogin: React.FC<{}> = () => {
 
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // LoginValidate.validate(dataLogin).then(() =>{
-    //     console.log(dataLogin);
-        
-    // }).catch((error) => {
-    //   alert(error)
-    // })
-
+    e.preventDefault();    
     alert(dataLogin);
+    LoginValidate.validate(dataLogin).then(() =>{
      fetch("http://localhost:3000/", {
        body: JSON.stringify(dataLogin),
        method: "POST",
@@ -33,6 +27,9 @@ export const FormLogin: React.FC<{}> = () => {
          localStorage.setItem("token", jsonResponse.payload.token);
        });
     });
+  }).catch((error) => {
+       alert(error)
+    })
   };
 
   return (
@@ -47,7 +44,9 @@ export const FormLogin: React.FC<{}> = () => {
             
           >
             <Form.Control
-                onChange={(e) => {dataLogin.email}}        
+                onChange={(e) => {
+                  setDataLogin((prev) => ({ ...prev, email: e.target.value }));
+                }}      
               size="lg"
               type="email"
               placeholder="name@example.com"
@@ -61,10 +60,12 @@ export const FormLogin: React.FC<{}> = () => {
             className="mb-3"
             style={{ color: "black", fontSize: "small" }}
           >
-            <Form.Control              
+            <Form.Control     
+             onChange={(e) => {
+              setDataLogin((prev) => ({ ...prev, password: e.target.value }));
+            }}          
               type="password"
               placeholder="Password"
-              onChange={(e) => {dataLogin.password}}  
             />
           </FloatingLabel>
         </Form.Group>
