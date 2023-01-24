@@ -4,25 +4,34 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import { useUserContext } from "../Context/userContext";
 import "../../pages/Login&SignUp/styles.css"
+import { LoginValidate } from "../../models/User";
 
 export const FormLogin: React.FC<{}> = () => {
-  const [form, setForm] = useState({ email: "", password: "" });
+  const [dataLogin, setDataLogin] = useState({ email: "", password: "" });
   const { handleSetValues } = useUserContext();
+
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    alert(form);
-    fetch("http://localhost:3000/api/auth/login", {
-      body: JSON.stringify(form),
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-    }).then((response) => {
+    // LoginValidate.validate(dataLogin).then(() =>{
+    //     console.log(dataLogin);
+        
+    // }).catch((error) => {
+    //   alert(error)
+    // })
+
+    alert(dataLogin);
+     fetch("http://localhost:3000/", {
+       body: JSON.stringify(dataLogin),
+       method: "POST",
+       headers: {
+         "content-type": "application/json",
+       },
+     }).then((response) => {
       response.json().then((jsonResponse) => {
-        handleSetValues("token", jsonResponse.payload.token);
-        localStorage.setItem("token", jsonResponse.payload.token);
-      });
+         handleSetValues("token", jsonResponse.payload.token);
+         localStorage.setItem("token", jsonResponse.payload.token);
+       });
     });
   };
 
@@ -35,15 +44,13 @@ export const FormLogin: React.FC<{}> = () => {
             label="Email"
             className="mb-3"
             style={{ color: "black", fontSize: "small" }}
+            
           >
             <Form.Control
-              onChange={(e) => {
-                setForm((prev) => ({ ...prev, email: e.target.value }));
-              }}
+                onChange={(e) => {dataLogin.email}}        
               size="lg"
               type="email"
               placeholder="name@example.com"
-              required
             />
           </FloatingLabel>
         </Form.Group>
@@ -54,13 +61,10 @@ export const FormLogin: React.FC<{}> = () => {
             className="mb-3"
             style={{ color: "black", fontSize: "small" }}
           >
-            <Form.Control
-              onChange={(e) => {
-                setForm((prev) => ({ ...prev, password: e.target.value }));
-              }}
+            <Form.Control              
               type="password"
               placeholder="Password"
-              required
+              onChange={(e) => {dataLogin.password}}  
             />
           </FloatingLabel>
         </Form.Group>
