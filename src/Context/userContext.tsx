@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
 const UserContext = React.createContext({
   username: "",
@@ -10,6 +11,7 @@ const UserContext = React.createContext({
 const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
+  const navigate = useNavigate();
   const [values, setValues] = useState({
     username: "",
     email: "",
@@ -28,10 +30,16 @@ const UserProvider: React.FC<{ children: React.ReactNode }> = ({
           authorization: `Bearer ${values.token}`,
         },
       }).then((response) => {
+
         response.json().then((jsonResponse) => {
+          console.log(jsonResponse);
+          
           handleSetValues("email", jsonResponse.email);
         });
       });
+    }
+    else {
+      navigate('/')
     }
   }, [values.token]);
 

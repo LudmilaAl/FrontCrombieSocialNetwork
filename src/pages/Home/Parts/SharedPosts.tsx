@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Context, ContextPost } from "../../../components/Context/publicationContext";
+import { Context, ContextPost } from "../../../Context/publicationContext";
 import "./PartsStyle.css";
 import { PostCard } from "./PostCard";
 

@@ -10,8 +10,19 @@ export interface User {
 }
 
 export const LoginValidate = yup.object({
-  email: yup.string().email().trim().required("Email is required"), 
-  password: yup.string().required("Password is required"), 
+  email: yup
+    .string()
+    .email("Email must be a valid email")
+    .required("Email is required"),
+  password: yup
+    .string()
+    .min(8, "Minimum: 8 characters")
+    .max(20, "Maximum: 20 characters")
+    .required("Password is required"),
+});
+
+const schema = yup.object().shape({
+  
 });
 
 export const SignUpValidate = yup.object({

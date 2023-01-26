@@ -1,5 +1,5 @@
 import "../Profile/styleprofile.css";
-import PostProvider from "../../components/Context/publicationContext";
+import PostProvider from "../../Context/publicationContext";
 import { NavBar } from "../Home/Parts/Navbar";
 import { SideBarProfile } from "./Parts/SideBarProfile";
 import { SharedPostProfile } from "./Parts/SharedPostsProfile";

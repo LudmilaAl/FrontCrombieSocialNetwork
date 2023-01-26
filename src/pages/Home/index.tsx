@@ -3,7 +3,7 @@ import { SideBar } from "./Parts/SideBar";
 import { CreatePost } from "./Parts/CreatePost";
 import { Trends } from "./Parts/Trends";
 import { NavBar } from "./Parts/Navbar";
-import PostProvider from "../../components/Context/publicationContext";
+import PostProvider from "../../Context/publicationContext";
 import { SharedPost } from "./Parts/SharedPosts";
 
 export const Homepage: React.FC<{}> = () => {

@@ -4,7 +4,7 @@ import { FormProvider } from "react-hook-form";
 import {
   Context,
   ContextPost,
-} from "../../../components/Context/publicationContext";
+} from "../../../Context/publicationContext";
 import { defaultUser } from "../../../components/Ejemplo";
 import { useCreate } from "../../../Hooks/useCreate";
 import "./PartsStyle.css";
@@ -24,6 +24,7 @@ export const CreatePost: React.FC<{}> = ({}) => {
 
   const handleChange = (event: any) => {
     const file = event.target.files[0] as File;
+    console.log(file,"Test");
     uploadMedia(URL.createObjectURL(file));
   };
 
@@ -59,7 +60,7 @@ export const CreatePost: React.FC<{}> = ({}) => {
                   <div key={key} className="btn-imagnBox">
                     <button
                       className="btn-imagen rounded-full bg-black absolute top-1 left-1 px-5 py-3 opacity-75"
-                      onClick={() => deleteImageFromMedia(item)}
+                      onClick={() => {deleteImageFromMedia(item)}}
                     >
                       <i className="bi bi-x-circle"></i>
                     </button>
@@ -82,7 +83,7 @@ export const CreatePost: React.FC<{}> = ({}) => {
                     accept="image/x-png, image/jpeg, image/jpg, image/gif"
                     onChange={handleChange}
                     ref={fileRef}
-                    style={{ display: "none" }}
+                    // style={{ display: "none" }}
                   />
                   <i className="bi bi-image"></i>
                 </button>                

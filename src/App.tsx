@@ -3,10 +3,10 @@ import { AppRouter } from "./routes/Navigation";
 
 function App() {
   return (
-    <div>      
+    <div>
         <BrowserRouter>
           <AppRouter></AppRouter>
-        </BrowserRouter>     
+        </BrowserRouter>
     </div>
   );
 }

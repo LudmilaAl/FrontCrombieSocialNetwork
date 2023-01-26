@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
-import { Post } from "../../models/Posts";
-import { defaultData, defaultUser } from "../Ejemplo";
+import { Post } from "../models/Posts";
+import { defaultData, defaultUser } from "../components/Ejemplo";
 
 export type ContextPost = {
   data: Post[];

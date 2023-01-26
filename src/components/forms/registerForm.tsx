@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
-import { useUserContext } from "../Context/userContext";
+import { useUserContext } from "../../Context/userContext";
 
-const RegisterForm: React.FC<{}> = () => {
+export const RegisterForm: React.FC<{}> = () => {
   const [form, setForm] = useState({
     email: "",
     username: "",
@@ -129,4 +129,3 @@ const RegisterForm: React.FC<{}> = () => {
   );
 };
 
-export default RegisterForm;

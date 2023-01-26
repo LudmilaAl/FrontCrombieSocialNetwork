@@ -6,7 +6,7 @@ import moment from "moment";
 import {
   ContextPost,
   Context,
-} from "../../../components/Context/publicationContext";
+} from "../../../Context/publicationContext";
 
 interface Props {
   post: Post;

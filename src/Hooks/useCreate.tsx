@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useContext } from 'react'
 import { Post,  PostSchema } from '../models/Posts'
-import { Context, ContextPost } from '../components/Context/publicationContext'
+import { Context, ContextPost } from '../Context/publicationContext'
 
 
 export const useCreate = () => {
